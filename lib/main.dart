@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:news_app_alex/NewsScreen/NewsApp.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news_app_alex/Provider/localizationsProvieder.dart';
+import 'package:news_app_alex/Settings/settingsScreen.dart';
+import 'package:provider/provider.dart';
 void main() {
   runApp(MyApp());
 }
@@ -19,17 +23,40 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
+    return ChangeNotifierProvider<LocalizationsProvider>(
+      create: (_)=>LocalizationsProvider(),
+      builder: (context,widget){
+        final provider =Provider.of<LocalizationsProvider>(context);
+        print(provider.language);
+        //provider.changeLanguage('ar');
+        return  MaterialApp(
+          localizationsDelegates: [
+            AppLocalizations.delegate, // Add this line
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            Locale('en', ''), // English, no country code
+            Locale('ar', ''), // Spanish, no country code
+          ],
+          locale: Locale(provider.language,''),
+          title: 'Flutter Demo',
+          theme: ThemeData(
 
-       primaryColor : MyThemeData.primaryColor,
-      ),
-      routes: {
-        NewsAppScreen.ROUTE_NAME:(buildContext)=>NewsAppScreen()
+            primaryColor : MyThemeData.primaryColor,
+          ),
+          routes: {
+            NewsAppScreen.ROUTE_NAME:(buildContext)=>NewsAppScreen(),
+            SettingsScreen.ROUTE_NAME:(buildContext)=>SettingsScreen()
+          },
+          initialRoute: SettingsScreen.ROUTE_NAME,
+        );
       },
-initialRoute: NewsAppScreen.ROUTE_NAME,
     );
   }
 }
+/*
+
+ */
 

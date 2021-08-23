@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_alex/Settings/settingsScreen.dart';
 import 'package:news_app_alex/main.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class SideMenu extends StatelessWidget {
-  const SideMenu({Key key}) : super(key: key);
+  Function onDrawerCategoryClicked;
+   SideMenu({this.onDrawerCategoryClicked});
 
   @override
   Widget build(BuildContext context) {
@@ -22,15 +24,24 @@ class SideMenu extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ))),
-          IconButton(icon: Row(
+          IconButton(
+            onPressed:(){onDrawerCategoryClicked();
+            Navigator.pop(context);
+            },
+            icon: Row(
             children: [
               Icon(Icons.list,color: Colors.black,size: 30,),
               SizedBox(width: 8,),
-              Text('Categories',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),)
+              Text(AppLocalizations.of(context).categories,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),)
             ],
           ),),
-          IconButton(icon: Row(
+          IconButton(
+            onPressed: (){
+              Navigator.of(context).pushNamed(SettingsScreen.ROUTE_NAME);
+            },
+            icon: Row(
             children: [
+
               Icon(Icons.settings,color: Colors.black,size: 30,),
               SizedBox(width: 8,),
               Text('Settings',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),)
@@ -40,4 +51,6 @@ class SideMenu extends StatelessWidget {
       ),
     );
   }
+
+
 }
