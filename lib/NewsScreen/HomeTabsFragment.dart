@@ -13,7 +13,8 @@ class _HomeTabsFragmentState extends State<HomeTabsFragment> {
   int selectedIndex=0;
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length:widget.sources.length,
+    return DefaultTabController(
+        length:widget.sources.length,
         child:Column(
           children: [
             Container(

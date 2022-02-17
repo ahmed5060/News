@@ -9,6 +9,7 @@ import 'package:news_app_alex/model/category.dart';
 import 'package:news_app_alex/model/sources_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class NewsAppScreen extends StatefulWidget {
   static final ROUTE_NAME = 'Home';
 

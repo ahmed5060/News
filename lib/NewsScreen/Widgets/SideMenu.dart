@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:news_app_alex/Settings/settingsScreen.dart';
 import 'package:news_app_alex/main.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../CategoriesFragment.dart';
+import '../NewsApp.dart';
 class SideMenu extends StatelessWidget {
   Function onDrawerCategoryClicked;
    SideMenu({this.onDrawerCategoryClicked});
@@ -25,8 +28,9 @@ class SideMenu extends StatelessWidget {
                         color: Colors.white),
                   ))),
           IconButton(
-            onPressed:(){onDrawerCategoryClicked();
-            Navigator.pop(context);
+            onPressed:(){
+              Navigator.pop(context);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewsAppScreen()));
             },
             icon: Row(
             children: [

@@ -6,6 +6,7 @@ import 'package:news_app_alex/Settings/LanguageBottomSheet.dart';
 import 'package:news_app_alex/main.dart';
 import 'package:provider/provider.dart';
 class SettingsScreen extends StatefulWidget {
+
   static final ROUTE_NAME='settingsScreen';
 
   @override

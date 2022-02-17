@@ -5,10 +5,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:news_app_alex/Provider/localizationsProvieder.dart';
 import 'package:news_app_alex/Settings/settingsScreen.dart';
 import 'package:provider/provider.dart';
+
 void main() {
   runApp(MyApp());
 }
 class MyThemeData{
+
   static final primaryColor=Color(0xff39A552);
   static var red=Color(0XFFC91C22);
   static var blue=Color(0XFF003E90);
@@ -30,6 +32,7 @@ class MyApp extends StatelessWidget {
         print(provider.language);
         //provider.changeLanguage('ar');
         return  MaterialApp(
+          debugShowCheckedModeBanner: false,
           localizationsDelegates: [
             AppLocalizations.delegate, // Add this line
             GlobalMaterialLocalizations.delegate,
@@ -50,7 +53,7 @@ class MyApp extends StatelessWidget {
             NewsAppScreen.ROUTE_NAME:(buildContext)=>NewsAppScreen(),
             SettingsScreen.ROUTE_NAME:(buildContext)=>SettingsScreen()
           },
-          initialRoute: SettingsScreen.ROUTE_NAME,
+          initialRoute: NewsAppScreen.ROUTE_NAME,
         );
       },
     );

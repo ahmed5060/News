@@ -4,6 +4,7 @@ import 'package:news_app_alex/main.dart';
 import 'package:news_app_alex/model/category.dart';
 
 class CategoriesFragment extends StatefulWidget {
+
   Function onCategoryClicked;
   CategoriesFragment(this.onCategoryClicked);
   @override
